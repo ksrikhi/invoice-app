@@ -10,10 +10,10 @@ function ProfileForm() {
     useEffect(async () => {
         try {
             let custmerDetail = await AsyncStorage.getItem(PERSISTENCE_KEY);
-            if (custmerDetail){
+            if (custmerDetail) {
                 setPayload(JSON.parse(custmerDetail));
             }
-            
+
         }
         catch (error) {
             alert(error);
@@ -72,7 +72,7 @@ function ProfileForm() {
                 onPress={
                     () => login()
                 }>
-                <Text style={styles.submitButtonText}> Submit </Text>
+                <Text style={styles.submitButtonText}> Save </Text>
             </TouchableOpacity>
         </View>
     )
@@ -86,17 +86,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     input: {
-        margin: 15,
+        marginVertical: 15,
         height: 40,
         borderColor: '#7a42f4',
         borderWidth: 1,
         padding: 20,
-        width: '100%'
     },
     submitButton: {
+        textAlign: 'center',
         backgroundColor: '#7a42f4',
         padding: 10,
-        margin: 15,
+        marginVertical: 15,
         height: 40,
     },
     submitButtonText: {
