@@ -44,6 +44,7 @@ function ProfileForm() {
                 placeholder="Company Adress"
                 placeholderTextColor="#9a73ef"
                 autoCapitalize="none"
+                value={payload.companyAddress}
                 onChangeText={(e) => handlePayload('companyAddress', e)} />
 
             <TextInput style={styles.input}
@@ -51,6 +52,7 @@ function ProfileForm() {
                 placeholder="City,Zip"
                 placeholderTextColor="#9a73ef"
                 autoCapitalize="none"
+                value={payload.city}
                 onChangeText={(e) => handlePayload('city', e)} />
 
             <TextInput style={styles.input}
@@ -58,6 +60,7 @@ function ProfileForm() {
                 placeholder="Phone Number"
                 placeholderTextColor="#9a73ef"
                 autoCapitalize="none"
+                value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
 
             <TextInput style={styles.input}
@@ -65,6 +68,7 @@ function ProfileForm() {
                 placeholder="state"
                 placeholderTextColor="#9a73ef"
                 autoCapitalize="none"
+                value={payload.state}
                 onChangeText={(e) => handlePayload('state', e)} />
 
             <TouchableOpacity
