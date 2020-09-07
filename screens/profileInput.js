@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { AsyncStorage } from 'react-native';
-
-const PERSISTENCE_KEY = 'Custmer_Detail';
+import { custmerDetailKey, primary, secondary } from '../theme/constant';
 
 function ProfileForm() {
     const [payload, setPayload] = useState({});
 
     useEffect(async () => {
         try {
-            let custmerDetail = await AsyncStorage.getItem(PERSISTENCE_KEY);
+            let custmerDetail = await AsyncStorage.getItem(custmerDetailKey);
             if (custmerDetail) {
                 setPayload(JSON.parse(custmerDetail));
             }
@@ -24,54 +23,60 @@ function ProfileForm() {
         setPayload({ ...payload, [key]: value })
     }
 
+    
     const login = () => {
         alert(`payload = ${JSON.stringify(payload)}`);
-        AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(payload));
+        AsyncStorage.setItem(custmerDetailKey, JSON.stringify(payload));
     }
 
     return (
         <View style={styles.container}>
+            <Text> Company Name  </Text>
             <TextInput style={styles.input}
                 underlineColorAndroid="transparent"
                 placeholder="Company Name"
-                placeholderTextColor="#9a73ef"
+                placeholderTextColor={primary}
                 autoCapitalize="none"
                 value={payload.companyName}
                 onChangeText={(e) => handlePayload('companyName', e)} />
-
-            <TextInput style={styles.input}
+             
+                <Text> Company Address  </Text>
+                <TextInput style={styles.input}
                 underlineColorAndroid="transparent"
                 placeholder="Company Adress"
-                placeholderTextColor="#9a73ef"
+                placeholderTextColor={primary}
                 autoCapitalize="none"
                 value={payload.companyAddress}
                 onChangeText={(e) => handlePayload('companyAddress', e)} />
-
-            <TextInput style={styles.input}
+              
+                <Text> City, Postal Code</Text>
+                <TextInput style={styles.input}
                 underlineColorAndroid="transparent"
-                placeholder="City,Zip"
-                placeholderTextColor="#9a73ef"
+                placeholder="City, Postal Code"
+                placeholderTextColor={primary}
                 autoCapitalize="none"
                 value={payload.city}
                 onChangeText={(e) => handlePayload('city', e)} />
-
-            <TextInput style={styles.input}
+               
+                <Text>Phone Number  </Text>
+                 <TextInput style={styles.input}
                 underlineColorAndroid="transparent"
                 placeholder="Phone Number"
-                placeholderTextColor="#9a73ef"
+                placeholderTextColor={primary}
                 autoCapitalize="none"
                 value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
-
-            <TextInput style={styles.input}
+               
+                <Text> Province  </Text>
+                <TextInput style={styles.input}
                 underlineColorAndroid="transparent"
-                placeholder="state"
-                placeholderTextColor="#9a73ef"
+                placeholder="Province"
+                placeholderTextColor={primary}
                 autoCapitalize="none"
                 value={payload.state}
                 onChangeText={(e) => handlePayload('state', e)} />
 
-            <TouchableOpacity
+                 <TouchableOpacity
                 style={styles.submitButton}
                 onPress={
                     () => login()
@@ -86,19 +91,19 @@ export default ProfileForm
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 23,
+        paddingTop: 10,
         flex: 1,
     },
     input: {
         marginVertical: 15,
         height: 40,
-        borderColor: '#7a42f4',
+        borderColor: primary,
         borderWidth: 1,
         padding: 20,
     },
     submitButton: {
         textAlign: 'center',
-        backgroundColor: '#7a42f4',
+        backgroundColor: primary,
         padding: 10,
         marginVertical: 15,
         height: 40,
