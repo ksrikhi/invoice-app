@@ -44,6 +44,7 @@ function ProfileForm() {
                 placeholder="Company Adress"
                 placeholderTextColor="#9a73ef"
                 autoCapitalize="none"
+                value={payload.companyAddress}
                 onChangeText={(e) => handlePayload('companyAddress', e)} />
 
             <TextInput style={styles.input}
@@ -72,7 +73,7 @@ function ProfileForm() {
                 onPress={
                     () => login()
                 }>
-                <Text style={styles.submitButtonText}> Submit </Text>
+                <Text style={styles.submitButtonText}> save </Text>
             </TouchableOpacity>
         </View>
     )
