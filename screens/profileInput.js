@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import { AsyncStorage } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native';
+import InputBox from './components/inputBox';
 import { custmerDetailKey, primary, secondary } from '../theme/constant';
 
 function ProfileForm() {
@@ -23,60 +23,39 @@ function ProfileForm() {
         setPayload({ ...payload, [key]: value })
     }
 
-    
+
     const login = () => {
-        alert(`payload = ${JSON.stringify(payload)}`);
         AsyncStorage.setItem(custmerDetailKey, JSON.stringify(payload));
     }
 
     return (
         <View style={styles.container}>
-            <Text> Company Name  </Text>
-            <TextInput style={styles.input}
-                underlineColorAndroid="transparent"
+            <InputBox
                 placeholder="Company Name"
-                placeholderTextColor={primary}
-                autoCapitalize="none"
                 value={payload.companyName}
                 onChangeText={(e) => handlePayload('companyName', e)} />
-             
-                <Text> Company Address  </Text>
-                <TextInput style={styles.input}
-                underlineColorAndroid="transparent"
+
+            <InputBox
                 placeholder="Company Adress"
-                placeholderTextColor={primary}
-                autoCapitalize="none"
                 value={payload.companyAddress}
                 onChangeText={(e) => handlePayload('companyAddress', e)} />
-              
-                <Text> City, Postal Code</Text>
-                <TextInput style={styles.input}
-                underlineColorAndroid="transparent"
+
+            <InputBox
                 placeholder="City, Postal Code"
-                placeholderTextColor={primary}
-                autoCapitalize="none"
                 value={payload.city}
                 onChangeText={(e) => handlePayload('city', e)} />
-               
-                <Text>Phone Number  </Text>
-                 <TextInput style={styles.input}
-                underlineColorAndroid="transparent"
+
+            <InputBox
                 placeholder="Phone Number"
-                placeholderTextColor={primary}
-                autoCapitalize="none"
                 value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
-               
-                <Text> Province  </Text>
-                <TextInput style={styles.input}
-                underlineColorAndroid="transparent"
+
+            <InputBox
                 placeholder="Province"
-                placeholderTextColor={primary}
-                autoCapitalize="none"
                 value={payload.state}
                 onChangeText={(e) => handlePayload('state', e)} />
 
-                 <TouchableOpacity
+            <TouchableOpacity
                 style={styles.submitButton}
                 onPress={
                     () => login()
@@ -93,13 +72,7 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 10,
         flex: 1,
-    },
-    input: {
-        marginVertical: 15,
-        height: 40,
-        borderColor: primary,
-        borderWidth: 1,
-        padding: 20,
+        width: '80%',
     },
     submitButton: {
         textAlign: 'center',
