@@ -7,7 +7,6 @@ function ProfileScreen() {
     return (
       <ScrollView style={{ flex: 1 }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}} >
-        <Text> Profile</Text>
         <ProfileForm />
         </View>
       </ScrollView>

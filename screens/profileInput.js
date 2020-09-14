@@ -24,7 +24,7 @@ function ProfileForm() {
     }
 
 
-    const login = () => {
+    const save = () => {
         AsyncStorage.setItem(custmerDetailKey, JSON.stringify(payload));
     }
 
@@ -58,7 +58,7 @@ function ProfileForm() {
             <TouchableOpacity
                 style={styles.submitButton}
                 onPress={
-                    () => login()
+                    () => save()
                 }>
                 <Text style={styles.submitButtonText}> Save </Text>
             </TouchableOpacity>
