@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import InputBox from './components/inputBox';
 
 function BillingDetail() {
@@ -21,7 +21,7 @@ function BillingDetail() {
 
     return (
         <View style={styles.container}>
-            <text><b>Billing To:</b></text>
+            <Text>Billing To:</Text>
             <InputBox
                 placeholder="Client Name"
                 value={payload.companyName}

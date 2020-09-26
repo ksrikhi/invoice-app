@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         width: '80%',
     },
     submitButton: {
-        textAlign: 'center',
+        alignContent: 'center',
         backgroundColor: primary,
         padding: 10,
         marginVertical: 15,

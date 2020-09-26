@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity, Text, View , Button} from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity, Text, View, Button } from 'react-native';
 import { Card } from 'react-native-elements';
 import InputBox from './components/inputBox';
 import { custmerDetailKey, primary, secondary } from '../theme/constant';
@@ -14,8 +14,20 @@ function BillingItems() {
   }
 
   const add = () => {
-    setListItem([...listItem, payload]);
+    // setListItem([...listItem, payload]);
+    listItem.push(payload);
+    setListItem([...listItem]);
     setPayload({})
+  }
+
+  const remove = index => {
+    listItem.splice(index, 1)
+    setListItem([...listItem]);
+  };
+
+  const edit = index => {
+    const newList= listItem.slice(index,1)
+    setPayload(newList[0])
   }
 
   return (
@@ -50,33 +62,33 @@ function BillingItems() {
         <View>
 
           <View style={{
-            flexDirection: 'row', flexWrap: 'wrap', justifyContent: "space-between",marginTop:10,
+            flexDirection: 'row', flexWrap: 'wrap', justifyContent: "space-between", marginTop: 10,
           }}>
-            <Text style={{ marginLeft: 20,width:345 }}>Discription</Text>
-            <Text style={{ width:300 }}>Unit cost</Text>
-            <Text style={{ width:250 }}>Quantity</Text>
-            <Text ></Text>
+            <Text style={{ marginLeft: 20, width: 345 }}>Discription</Text>
+            <Text style={{ width: 300 }}>Unit cost</Text>
+            <Text style={{ width: 250 }}>Quantity</Text>
           </View>
         </View>
 
-        
-        {listItem.map(item =>
-          <View style={styles.row}>
-            <Text style={{width:485 }}>{item.discription}</Text>
-            <Text style={{ width:400 }}>{item.unitCost}</Text>
-            <Text style={{ width:205 }}>{item.quantity}</Text>
-            <View style={styles.icon} >
-           <Icon
-  raised
-  name='delete'
-  color='#f50'
-  onPress={() => console.log('hello')} />
-  <Icon
-  raised
-  name='edit'
-  color='#f50'
-  onPress={() => console.log('hello')} />
-           
+
+        {listItem.map((item, index) =>
+          <View key={item.index} style={styles.row}>
+            <Text style={{ width: 485 }}>{item.discription}</Text>
+            <Text style={{ width: 400 }}>{item.unitCost}</Text>
+            <Text style={{ width: 205 }}>{item.quantity}</Text>
+            <View style={styles.icon} key={index} >
+              <Icon
+                onPress={() => remove(index)}
+                raised
+                name='delete'
+                color='#f50' />
+
+              <Icon
+              onPress={() => edit(index)}
+                raised
+                name='edit'
+                color='#f50' />
+
             </View>
           </View>
         )}
@@ -95,7 +107,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   submitButton: {
-    textAlign: 'center',
+    alignContent: 'center',
     backgroundColor: primary,
     padding: 10,
     marginVertical: 15,
@@ -105,7 +117,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   row: {
-    marginTop:10,
+    marginTop: 10,
     borderWidth: 2,
     paddingLeft: 15,
     borderLeftWidth: 3,
@@ -114,11 +126,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between"
   },
- icon: {
-   shadowOffset:3,
-  size:4 ,
-  flexDirection: 'row',
-  justifyContent: 'space-between',
- 
- }
+  icon: {
+    shadowOffset: 3,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+
+  }
 })
