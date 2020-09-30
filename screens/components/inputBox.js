@@ -15,6 +15,7 @@ function InputBox({ placeholder, value, onChangeText}) {
           height: 40,
           borderWidth: 2,
           borderRadius: 2,
+          paddingHorizontal: 5,
           borderColor: backgroundColor}}
         onFocus={()=> setBackgroundColor(secondary)}
         onBlur={()=> setBackgroundColor(primary)}
@@ -29,13 +30,3 @@ function InputBox({ placeholder, value, onChangeText}) {
 }
 
 export default InputBox;
-
-
-const styles = StyleSheet.create({
-  input: {
-    marginVertical: 15,
-    height: 40,
-    borderWidth: 1,
-    padding: 20,
-  }
-})
