@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
-import { Text, TextInput, StyleSheet } from 'react-native';
+import { Text, TextInput } from 'react-native';
 import { primary, secondary } from '../../theme/constant';
 
-function InputBox({ placeholder, value, onChangeText}) {
+function InputBox({ placeholder, value, onChangeText, required}) {
   const [backgroundColor, setBackgroundColor] = useState(primary);
+  const [errorMessage , setErrorMessage]= useState('');
   
+  const onBlur= () => {
+    if (required && !value) {
+      setErrorMessage(`${placeholder} is required `);
+    } else {
+      setErrorMessage('');
+    }
+  }
+
   return (
     <>
       <Text>{placeholder}</Text>
@@ -18,13 +27,14 @@ function InputBox({ placeholder, value, onChangeText}) {
           paddingHorizontal: 5,
           borderColor: backgroundColor}}
         onFocus={()=> setBackgroundColor(secondary)}
-        onBlur={()=> setBackgroundColor(primary)}
+        onBlur={()=> { setBackgroundColor(primary); onBlur();}}
         autoCapitalize="none"
         placeholderTextColor={primary}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
          />
+         {/* {errorMessage && <Text>{errorMessage}</Text>} */}
       </>
   );
 }
