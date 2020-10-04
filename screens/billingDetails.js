@@ -45,11 +45,13 @@ function BillingDetail() {
 
             <InputBox
                 placeholder="Phone Number"
+                keyboardType="number-pad"
                 value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
 
             <InputBox
                 placeholder="Email"
+                keyboardType="email-address"
                 value={payload.email}
                 onChangeText={(e) => handlePayload('email', e)} />
 

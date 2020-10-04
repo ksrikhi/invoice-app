@@ -6,7 +6,7 @@ const ItemCard = ({ item: { discription, unitCost, quantity }, index, edit, remo
  return (
         <ListItem key={discription}>
             <ListItem.Content>
-                <ListItem.Title>{discription}</ListItem.Title>
+                <ListItem.Title><h4>{discription}</h4></ListItem.Title>
                 <ListItem.Subtitle>{`$${unitCost}, Quantity: ${quantity}`}</ListItem.Subtitle>
             </ListItem.Content>
             <Icon style={styles.icon}

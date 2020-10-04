@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native';
 import InputBox from './components/inputBox';
+import getCustomerDetail from './components/utill';
 import { custmerDetailKey, primary, secondary } from '../theme/constant';
 
 function ProfileForm() {
     const [payload, setPayload] = useState({});
 
-    useEffect(async () => {
-        try {
-            let custmerDetail = await AsyncStorage.getItem(custmerDetailKey);
-            if (custmerDetail) {
-                setPayload(JSON.parse(custmerDetail));
-            }
-
-        }
-        catch (error) {
-            alert(error);
-        }
-    }, []);
+    useEffect( async () => {
+        const details = await getCustomerDetail();
+        setPayload(details)
+      },[]);
+    
 
     const handlePayload = (key, value) => {
         setPayload({ ...payload, [key]: value })
