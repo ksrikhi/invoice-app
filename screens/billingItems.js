@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { ScrollView, StyleSheet, TouchableOpacity, Text, View, Button } from 'react-native';
+// import axios from 'axios';
+import { ScrollView, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import InputBox from './components/inputBox';
-import getCustomerDetail from './components/utill';
+// import getCustomerDetail from './components/utill';
 import { primary } from '../theme/constant';
 import ItemCard from './components/itemCard';
 
-function BillingItems() {
+function BillingItems({ listItem, setListItem }) {
   const [payload, setPayload] = useState({});
-  const [listItem, setListItem] = useState([]);
 
   const handlePayload = (key, value) => {
     setPayload({ ...payload, [key]: value });
@@ -40,22 +39,22 @@ function BillingItems() {
     setListItem([...listItem]);
   };
 
-    const details =  async () => await getCustomerDetail();
+  //   const details =  async () => await getCustomerDetail();
     
-  const sendInvoice = () => {
-    axios.post('http://localhost:8080/sendEmail', {
-      billingDetail: payload,
-      items: listItem,
-      profileDetail: details()
-    }
-    )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  // const sendInvoice = () => {
+  //   axios.post('http://localhost:8080/sendEmail', {
+  //     billingDetail: payload,
+  //     items: listItem,
+  //     profileDetail: details()
+  //   }
+  //   )
+  //     .then(function (response) {
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
 
 
@@ -99,13 +98,13 @@ function BillingItems() {
             <ItemCard key={item.discription} item={item} edit={edit} remove={remove} index={i} />
           ))}
         </View>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.submitButton}
           onPress={
             () => sendInvoice()
           }>
           <Text style={styles.submitButtonText}> Send Invoice </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </ScrollView>
   );

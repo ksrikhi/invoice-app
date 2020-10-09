@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import InputBox from './components/inputBox';
 
-function BillingDetail() {
-    const [payload, setPayload] = useState({});
-
-
+function BillingDetail({ payload, setPayload }) {
+  
     const handlePayload = (key, value) => {
         setPayload({ ...payload, [key]: value })
     }
-    const send = () => {
-      alert( JSON.stringify(payload));
+    // const send = () => {
+    //   alert( JSON.stringify(payload));
         
-    }
+    // }
 
 
     // const save = () => {
