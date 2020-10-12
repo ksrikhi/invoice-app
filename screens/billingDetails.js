@@ -7,15 +7,6 @@ function BillingDetail({ payload, setPayload }) {
     const handlePayload = (key, value) => {
         setPayload({ ...payload, [key]: value })
     }
-    // const send = () => {
-    //   alert( JSON.stringify(payload));
-        
-    // }
-
-
-    // const save = () => {
-    //     AsyncStorage.setItem(custmerDetailKey, JSON.stringify(payload));
-    // }
 
     return (
         <View style={styles.container}>
@@ -39,8 +30,6 @@ function BillingDetail({ payload, setPayload }) {
                 placeholder="Province"
                 value={payload.state}
                 onChangeText={(e) => handlePayload('state', e)} />
-
-
             <InputBox
                 placeholder="Phone Number"
                 keyboardType="number-pad"
@@ -51,9 +40,7 @@ function BillingDetail({ payload, setPayload }) {
                 placeholder="Email"
                 keyboardType="email-address"
                 value={payload.email}
-                onChangeText={(e) => handlePayload('email', e)} />
-
-          
+                onChangeText={(e) => handlePayload('email', e)} />          
         </View>
     )
 }

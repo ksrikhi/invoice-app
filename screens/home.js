@@ -11,16 +11,15 @@ import BillingItems from './billingItems';
 function HomeScreen() {
   const [payload, setPayload] = useState({});
   const [listItem, setListItem] = useState([]);
-
-  const details =  async () => await getCustomerDetail();
     
-  const sendInvoice = () => {
-    axios.post('http://localhost:8080/sendEmail', {
+  const sendInvoice = async() => {
+  const profileDetail =  await getCustomerDetail();
+    const data = {
       billingDetail: payload,
       items: listItem,
-      profileDetail: details()
+      profileDetail: profileDetail
     }
-    )
+    axios.post('http://localhost:8080/sendEmail', data)
       .then(function (response) {
         console.log(response);
       })

@@ -6,13 +6,7 @@ import 'react-native-gesture-handler';
 import MyTabs from './screens/tab';
 
 const Stack = createStackNavigator();
-const theme = {
-  Button: {
-    titleStyle: {
-      color: 'red',
-    },
-  },
-};
+const theme = {};
 
 export default function App() {
   return (

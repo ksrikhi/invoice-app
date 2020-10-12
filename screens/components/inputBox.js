@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { Text, TextInput } from 'react-native';
+import { Text, TextInput, StyleSheet } from 'react-native';
 import { primary, secondary } from '../../theme/constant';
 
-function InputBox({ placeholder, value, onChangeText, required}) {
+function InputBox({ placeholder, value, required, ...rest}) {
   const [backgroundColor, setBackgroundColor] = useState(primary);
   const [errorMessage , setErrorMessage]= useState('');
   
-  const onBlur= () => {
-    if (required && !value) {
-      setErrorMessage(`${placeholder} is required `);
-    } else {
-      setErrorMessage('');
-    }
-  }
+  const onBlur= () => 
+    setErrorMessage(required && !value ? `${placeholder} is required ` : '');
 
   return (
     <>
-      <Text>{placeholder}</Text>
+      <Text style={styles.item}>{placeholder}</Text>
       <TextInput
         style={{ 
           width: '100%',
@@ -32,11 +27,22 @@ function InputBox({ placeholder, value, onChangeText, required}) {
         placeholderTextColor={primary}
         placeholder={placeholder}
         value={value}
-        onChangeText={onChangeText}
+        {...rest}
          />
-         {/* {errorMessage && <Text>{errorMessage}</Text>} */}
+        {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
       </>
   );
 }
 
 export default InputBox;
+
+const styles = StyleSheet.create({
+error: {
+  color: 'red',
+  marginTop:-12,
+  marginBottom:10
+},
+  item: { 
+    marginBottom:-9,  
+  }
+})

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
-import { ScrollView, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity, Text, View, Platform } from 'react-native';
 import { Card } from 'react-native-elements';
 import InputBox from './components/inputBox';
-// import getCustomerDetail from './components/utill';
 import { primary } from '../theme/constant';
 import ItemCard from './components/itemCard';
 
@@ -24,7 +22,6 @@ function BillingItems({ listItem, setListItem }) {
     setListItem((listItem) => {
       return [...listItem, payload];
     });
-
     setPayload({});
   }
 
@@ -34,29 +31,10 @@ function BillingItems({ listItem, setListItem }) {
   };
 
   const edit = index => {
-    const newList = listItem.slice(index, 1)
+    const newList = listItem.slice(index, 1);
+    setListItem(listItem);
     setPayload(newList[0]);
-    setListItem([...listItem]);
   };
-
-  //   const details =  async () => await getCustomerDetail();
-    
-  // const sendInvoice = () => {
-  //   axios.post('http://localhost:8080/sendEmail', {
-  //     billingDetail: payload,
-  //     items: listItem,
-  //     profileDetail: details()
-  //   }
-  //   )
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
-
-
 
   return (
     <ScrollView style={styles.container}>
@@ -79,7 +57,6 @@ function BillingItems({ listItem, setListItem }) {
           keyboardType="decimal-pad"
           value={payload.quantity}
           onChangeText={(e) => handlePayload('quantity', e)}
-          onPress={() => Alert.alert('Cannot press this one')}
         />
 
         <TouchableOpacity
@@ -91,20 +68,17 @@ function BillingItems({ listItem, setListItem }) {
           <Text style={styles.submitButtonText}> Add </Text>
         </TouchableOpacity>
       </Card>
-      <View>
-
-        <View style={styles.list}>
-          {listItem.map((item, i) => (
-            <ItemCard key={item.discription} item={item} edit={edit} remove={remove} index={i} />
-          ))}
-        </View>
-        {/* <TouchableOpacity
-          style={styles.submitButton}
-          onPress={
-            () => sendInvoice()
-          }>
-          <Text style={styles.submitButtonText}> Send Invoice </Text>
-        </TouchableOpacity> */}
+      <View style={styles.list}>
+        {Platform.OS !== 'web' ? listItem.map((item, i) => (
+          <ItemCard key={item.discription} item={item} edit={edit} remove={remove} index={i} />
+        )) : listItem.map((item, i) => (
+          <View key={item.discription}> 
+            <Text>{item.discription}</Text>
+            <Text onPress={remove}>remove</Text>
+            <Text onPress={edit}>edit</Text>
+          </View>
+        ))
+      }
       </View>
     </ScrollView>
   );
