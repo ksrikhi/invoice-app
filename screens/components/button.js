@@ -1,20 +1,33 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { primary } from '../../theme/constant';
 
-import { primary } from '../theme/constant';
 
-function InputBox() {
-    
-    return (){
+function InputButton ({ disabled,label, ...rest}) {
+return (
+    <>
 <TouchableOpacity
 style={{
-    backgroundColor: primary,
+    backgroundColor: disabled? "gray":primary,
     padding: 10,
     marginVertical: 15,
     height: 40,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    ...rest
 
 }}
-/>
-    }}
+>
+<Text style={styles.submitButtonText}>{label}</Text>
+</TouchableOpacity>
+
+</>
+)}
+export default InputButton;
+
+
+const styles = StyleSheet.create({
+    submitButtonText: {
+        color: 'white'
+    }
+})

@@ -4,6 +4,7 @@ import { Card } from 'react-native-elements';
 import InputBox from './components/inputBox';
 import { primary } from '../theme/constant';
 import ItemCard from './components/itemCard';
+import InputButton from './components/button';
 
 function BillingItems({ listItem, setListItem }) {
   const [payload, setPayload] = useState({});
@@ -59,6 +60,15 @@ function BillingItems({ listItem, setListItem }) {
           onChangeText={(e) => handlePayload('quantity', e)}
         />
 
+        {/* <InputButton
+          disabled={!(payload.discription && payload.unitCost && payload.quantity)}
+          label="Add"
+          onPress={
+            () => add()
+          }
+        >
+        </InputButton> */}
+
         <TouchableOpacity
           disabled={!(payload.discription && payload.unitCost && payload.quantity)}
           style={styles.submitButton}
@@ -72,13 +82,13 @@ function BillingItems({ listItem, setListItem }) {
         {Platform.OS !== 'web' ? listItem.map((item, i) => (
           <ItemCard key={item.discription} item={item} edit={edit} remove={remove} index={i} />
         )) : listItem.map((item, i) => (
-          <View key={item.discription}> 
+          <View key={item.discription}>
             <Text>{item.discription}</Text>
             <Text onPress={remove}>remove</Text>
             <Text onPress={edit}>edit</Text>
           </View>
         ))
-      }
+        }
       </View>
     </ScrollView>
   );
