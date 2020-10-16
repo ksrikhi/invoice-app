@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, Text, View, Platform } from 'react-native';
 import { Card } from 'react-native-elements';
 import InputBox from './components/inputBox';
+import InputButton from './components/button';
 import { primary } from '../theme/constant';
 import ItemCard from './components/itemCard';
-import InputButton from './components/button';
+
 
 function BillingItems({ listItem, setListItem }) {
   const [payload, setPayload] = useState({});
@@ -47,7 +48,7 @@ function BillingItems({ listItem, setListItem }) {
           onChangeText={(e) => handlePayload('discription', e)}
         />
         <InputBox
-          keyboardType="phone-pad"
+          keyboardType="decimal-pad"
           placeholder="Unit Cost"
           required
           value={payload.unitCost}
@@ -55,28 +56,27 @@ function BillingItems({ listItem, setListItem }) {
         />
         <InputBox
           placeholder="Quantity"
-          keyboardType="decimal-pad"
+          keyboardType="phone-pad"
           value={payload.quantity}
           onChangeText={(e) => handlePayload('quantity', e)}
         />
 
-        {/* <InputButton
-          disabled={!(payload.discription && payload.unitCost && payload.quantity)}
-          label="Add"
-          onPress={
-            () => add()
-          }
-        >
-        </InputButton> */}
+<InputButton
+                disabled={!(payload.discription && payload.unitCost && payload.quantity)}
+                onPress={
+                  () => add()}
+                label="Add" 
+            >
+            </InputButton>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           disabled={!(payload.discription && payload.unitCost && payload.quantity)}
           style={styles.submitButton}
           onPress={
             () => add()
           }>
           <Text style={styles.submitButtonText}> Add </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </Card>
       <View style={styles.list}>
         {Platform.OS !== 'web' ? listItem.map((item, i) => (
@@ -84,6 +84,8 @@ function BillingItems({ listItem, setListItem }) {
         )) : listItem.map((item, i) => (
           <View key={item.discription}>
             <Text>{item.discription}</Text>
+            <Text>{item.unitCost}</Text>
+            <Text>{item.quantity}</Text>
             <Text onPress={remove}>remove</Text>
             <Text onPress={edit}>edit</Text>
           </View>

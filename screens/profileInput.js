@@ -43,6 +43,7 @@ function ProfileForm() {
 
             <InputBox
                 placeholder="Phone Number"
+                
                 required
                 value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
@@ -61,9 +62,9 @@ function ProfileForm() {
                  <InputButton
                 disabled={!(payload.companyName && payload.companyAddress && payload.city
                     && payload.state && payload.phoneNumber && payload.email)}
-                label="send"
+                label="Save"
                 onPress={
-                  () => sendInvoice()
+                  () => save()
                 }
             >
             </InputButton>

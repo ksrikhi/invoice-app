@@ -7,6 +7,7 @@ function InputButton ({ disabled,label, ...rest}) {
 return (
     <>
 <TouchableOpacity
+{...rest}
 style={{
     backgroundColor: disabled? "gray":primary,
     padding: 10,
@@ -14,8 +15,7 @@ style={{
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    ...rest
-
+    ...rest.style,
 }}
 >
 <Text style={styles.submitButtonText}>{label}</Text>
