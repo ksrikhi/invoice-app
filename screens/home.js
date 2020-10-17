@@ -22,7 +22,7 @@ function HomeScreen() {
     axios.post('https://techbyteinvoice.herokuapp.com/api/sendEmail', data)
       .then(function (response) {
         console.log(response);
-      })
+      }) 
       .catch(function (error) {
         console.log(error);
       });

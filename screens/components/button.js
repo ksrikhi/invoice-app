@@ -10,7 +10,7 @@ return (
 title={title}
 disabled={disabled}
 {...rest}
-style={{
+buttonStyley={{
     backgroundColor: disabled? "gray" : primary,
     padding: 10,
     marginVertical: 15,
