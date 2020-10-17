@@ -3,14 +3,15 @@ import { TouchableOpacity, Text, StyleSheet, Button } from 'react-native';
 import { primary } from '../../theme/constant';
 
 
-function InputButton ({ disabled,label, ...rest}) {
+function InputButton ({title, disabled,label, ...rest}) {
 return (
     <>
 <Button
+title={title}
 disabled={disabled}
 {...rest}
 style={{
-    backgroundColor: disabled? "gray":primary,
+    backgroundColor: disabled? "gray" : primary,
     padding: 10,
     marginVertical: 15,
     height: 40,
@@ -19,7 +20,7 @@ style={{
     ...rest.style,
 }}
 >
-<Text style={styles.submitButtonText}>{label}</Text>
+{/* <Text style={styles.submitButtonText}>{label}</Text> */}
 </Button>
 
 </>

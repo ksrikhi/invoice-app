@@ -8,11 +8,13 @@ import { custmerDetailKey } from '../theme/constant';
 function ProfileForm() {
     const [payload, setPayload] = useState({});
 
-    useEffect(async () => {
-        const details = await getCustomerDetail();
-        setPayload(details)
+    useEffect(() => {
+        async function fetchData() {
+            const details = await getCustomerDetail();
+            setPayload(details)
+        }
+        fetchData();
     }, []);
-
 
     const handlePayload = (key, value) => {
         setPayload({ ...payload, [key]: value })
@@ -58,17 +60,18 @@ function ProfileForm() {
                 keyboardType="email-address"
                 value={payload.email}
                 onChangeText={(e) => handlePayload('email', e)} />
-          
-                 <InputButton
+
+            <InputButton
                 disabled={!(payload.companyName && payload.companyAddress && payload.city
                     && payload.state && payload.phoneNumber && payload.email)}
-                label="Save"
+                // label="Save"
+                title="Save"
                 onPress={
-                  () => save()
+                    () => save()
                 }
             >
             </InputButton>
-              
+
             {/* <TouchableOpacity
                 style={styles.submitButton}
                 onPress={

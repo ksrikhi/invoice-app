@@ -27,6 +27,7 @@ function InputBox({ placeholder, value, required, ...rest}) {
         placeholderTextColor={primary}
         placeholder={placeholder}
         value={value}
+        
         {...rest}
          />
         {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}

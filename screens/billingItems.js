@@ -48,7 +48,7 @@ function BillingItems({ listItem, setListItem }) {
           onChangeText={(e) => handlePayload('discription', e)}
         />
         <InputBox
-          keyboardType="decimal-pad"
+          keyboardType="numeric"
           placeholder="Unit Cost"
           required
           value={payload.unitCost}
@@ -65,7 +65,7 @@ function BillingItems({ listItem, setListItem }) {
           disabled={!(payload.discription && payload.unitCost && payload.quantity)}
           onPress={
             () => add()}
-          label="Add"
+            title="Add"
         >
         </InputButton>
 

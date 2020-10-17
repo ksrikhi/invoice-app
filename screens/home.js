@@ -36,7 +36,7 @@ function HomeScreen() {
         <InputButton style={{ width: '88%' }}
           disabled={!(payload.clientName && payload.city
             && payload.state && payload.phoneNumber && payload.email)}
-          label="Send Invoice"
+            title="Send Invoice"
           onPress={
             () => sendInvoice()
           }
