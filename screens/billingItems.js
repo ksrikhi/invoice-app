@@ -61,13 +61,13 @@ function BillingItems({ listItem, setListItem }) {
           onChangeText={(e) => handlePayload('quantity', e)}
         />
 
-<InputButton
-                disabled={!(payload.discription && payload.unitCost && payload.quantity)}
-                onPress={
-                  () => add()}
-                label="Add" 
-            >
-            </InputButton>
+        <InputButton
+          disabled={!(payload.discription && payload.unitCost && payload.quantity)}
+          onPress={
+            () => add()}
+          label="Add"
+        >
+        </InputButton>
 
         {/* <TouchableOpacity
           disabled={!(payload.discription && payload.unitCost && payload.quantity)}

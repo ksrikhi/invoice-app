@@ -5,7 +5,7 @@ import InputBox from './components/inputBox';
 function BillingDetail({ payload, setPayload }) {
   
     const handlePayload = (key, value) => {
-        setPayload({ ...payload, [key]: value })
+        setPayload({ ...payload, [key]: value });
     }
 
     return (

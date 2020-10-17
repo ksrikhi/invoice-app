@@ -43,7 +43,7 @@ function ProfileForm() {
 
             <InputBox
                 placeholder="Phone Number"
-                
+                keyboardType="number-pad"
                 required
                 value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />

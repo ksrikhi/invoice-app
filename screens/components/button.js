@@ -1,12 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Button } from 'react-native';
 import { primary } from '../../theme/constant';
 
 
 function InputButton ({ disabled,label, ...rest}) {
 return (
     <>
-<TouchableOpacity
+<Button
+disabled={disabled}
 {...rest}
 style={{
     backgroundColor: disabled? "gray":primary,
@@ -19,7 +20,7 @@ style={{
 }}
 >
 <Text style={styles.submitButtonText}>{label}</Text>
-</TouchableOpacity>
+</Button>
 
 </>
 )}
