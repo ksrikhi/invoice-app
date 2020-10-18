@@ -7,11 +7,15 @@ function InputButton ({title, disabled,label, ...rest}) {
 return (
     <>
 <Button
+raised={true}
+
+overrides={true}
+backgroundColor='red'
 title={title}
 disabled={disabled}
 {...rest}
-buttonStyley={{
-    backgroundColor: disabled? "gray" : primary,
+style={{
+    backgroundColor: disabled? "gray" : "red",
     padding: 10,
     marginVertical: 15,
     height: 40,
