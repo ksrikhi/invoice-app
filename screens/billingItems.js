@@ -6,7 +6,6 @@ import InputButton from './components/button';
 import { primary } from '../theme/constant';
 import ItemCard from './components/itemCard';
 
-
 function BillingItems({ listItem, setListItem }) {
   const [payload, setPayload] = useState({});
 
@@ -33,9 +32,9 @@ function BillingItems({ listItem, setListItem }) {
   };
 
   const edit = index => {
-    const newList = listItem.slice(index, 1);
-    setListItem(listItem);
+    const newList = listItem.splice(index, 1);
     setPayload(newList[0]);
+    setListItem([...listItem]);
   };
 
   return (
@@ -86,8 +85,8 @@ function BillingItems({ listItem, setListItem }) {
             <Text>{item.discription}</Text>
             <Text>{item.unitCost}</Text>
             <Text>{item.quantity}</Text>
-            <Text onPress={remove}>remove</Text>
-            <Text onPress={edit}>edit</Text>
+            <Text onPress={() => remove(i)}>remove</Text>
+            <Text onPress={() =>edit(i)}>edit</Text>
           </View>
         ))
         }

@@ -30,10 +30,10 @@ function HomeScreen() {
 
   return (
     <ScrollView>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <BillingDetail payload={payload} setPayload={setPayload} />
         <BillingItems listItem={listItem} setListItem={setListItem} />
-        <InputButton style={{ width: '88%' }}
+        <InputButton style={{width: 1200}}
           disabled={!(payload.clientName && payload.city
             && payload.state && payload.phoneNumber && payload.email)}
             title="Send Invoice"

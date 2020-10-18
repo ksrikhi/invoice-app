@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from './home';
 import ProfileScreen from './profile';
+import { primary } from '../theme/constant';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ function MyTabs() {
                 options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size={size} />
+                        <MaterialCommunityIcons name="home" color={primary} size={size} />
                     ),
                 }}
             />

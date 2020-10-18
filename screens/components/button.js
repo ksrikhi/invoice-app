@@ -1,34 +1,27 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements'
 import { primary } from '../../theme/constant';
 
 
-function InputButton ({title, disabled,label, ...rest}) {
-return (
-    <>
-<Button
-raised={true}
-
-overrides={true}
-backgroundColor='red'
-title={title}
-disabled={disabled}
-{...rest}
-style={{
-    backgroundColor: disabled? "gray" : "red",
-    padding: 10,
-    marginVertical: 15,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...rest.style,
-}}
->
-{/* <Text style={styles.submitButtonText}>{label}</Text> */}
-</Button>
-
-</>
-)}
+function InputButton({ title, disabled, label, ...rest }) {
+    return (
+            <Button
+                title={title}
+                disabled={disabled}
+                {...rest}
+                buttonStyle={{
+                    backgroundColor: disabled ? "gray" : primary,
+                    padding: 10,
+                    marginVertical: 15,
+                    height: 40,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    ...rest.style,
+                }}
+            />
+    )
+}
 export default InputButton;
 
 

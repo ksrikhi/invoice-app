@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { ListItem, Icon } from 'react-native-elements';
+import { secondary } from '../../theme/constant';
+
 
 const ItemCard = ({ item: { discription, unitCost, quantity }, index, edit, remove }) => {
  return (
@@ -18,7 +20,7 @@ const ItemCard = ({ item: { discription, unitCost, quantity }, index, edit, remo
                 onPress={() => edit(index)}
                 raised
                 name='edit'
-                color='#f50' />
+                color = {secondary} />
         </ListItem>
     );
 }
