@@ -33,6 +33,7 @@ function BillingDetail({ payload, setPayload }) {
             <InputBox
                 placeholder="Phone Number"
                 keyboardType="number-pad"
+                maxLength={10}
                 value={payload.phoneNumber}
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
 
