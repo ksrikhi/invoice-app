@@ -4,9 +4,11 @@ import InputBox from './components/inputBox';
 import InputButton from './components/button';
 import getCustomerDetail from './components/utill';
 import { custmerDetailKey } from '../theme/constant';
+import OverlayMessage from './components/overlayBox';
 
 function ProfileForm() {
     const [payload, setPayload] = useState({});
+    const [profileData, setProfileData] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -23,6 +25,7 @@ function ProfileForm() {
 
     const save = () => {
         AsyncStorage.setItem(custmerDetailKey, JSON.stringify(payload));
+        setProfileData({type: 'success', message :"profile saved successfully"})
     }
 
     return (
@@ -72,13 +75,7 @@ function ProfileForm() {
             >
             </InputButton>
 
-            {/* <TouchableOpacity
-                style={styles.submitButton}
-                onPress={
-                    () => save()
-                }>
-                <Text style={styles.submitButtonText}> Save </Text>
-            </TouchableOpacity> */}
+            {profileData ? <OverlayMessage resData={profileData}  setResData= {setProfileData}/>: null}
         </View>
     )
 }

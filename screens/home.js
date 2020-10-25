@@ -14,6 +14,11 @@ function HomeScreen() {
   const [listItem, setListItem] = useState([]);
   const [resData, setResData] = useState(null);
 
+  const reset = () => {
+    setPayload({});
+    setListItem([]);
+
+  }
   const sendInvoice = async () => {
     const profileDetail = await getCustomerDetail();
     const data = {
@@ -24,6 +29,7 @@ function HomeScreen() {
     axios.post('https://techbyteinvoice.herokuapp.com/api/sendEmail', data)
       .then(function (response) {
         setResData(response.data);
+        reset()
       })
 
       .catch(function (error) {
