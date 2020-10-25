@@ -12,7 +12,7 @@ function MyTabs() {
         <Tab.Navigator
             initialRouteName="HomeScreen"
             tabBarOptions={{
-                activeTintColor: '#e91e63',
+                activeTintColor: primary,
             }}
         >
             <Tab.Screen
@@ -21,7 +21,7 @@ function MyTabs() {
                 options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={primary} size={size} />
+                        <MaterialCommunityIcons name="home" color={color} size={size} />
                     ),
                 }}
             />
