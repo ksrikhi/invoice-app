@@ -7,7 +7,7 @@ const OverlayMessage = ({ resData, setResData }) => {
   return (
     <View style={styles.container}> 
       <Overlay isVisible={!!resData} onBackdropPress={() => setResData(null)}>
-          <Text style={styles.welcome}>{resData.message}</Text> 
+          <Text style={{color: resData.type === 'error'? 'red' : 'green'}}>{resData.message}</Text> 
       </Overlay>
     </View>
   )

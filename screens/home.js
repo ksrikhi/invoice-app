@@ -21,7 +21,7 @@ function HomeScreen() {
       items: listItem,
       profileDetail: profileDetail
     }
-    axios.post('https://techbyteinvoice.herokuapp.com/api/sendEmail', data)
+    axios.post(' http://localhost:8080/api/sendEmail', data)
       .then(function (response) {
         setResData(response.data);
       })
