@@ -9,7 +9,7 @@ function BillingDetail({ payload, setPayload }) {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Text>Billing To:</Text>
             <InputBox
                 placeholder="Client Name"
@@ -38,7 +38,7 @@ function BillingDetail({ payload, setPayload }) {
                 placeholder="Invoice Number"
                 value={payload.invoiceNumber}
                 onChangeText={(e) => handlePayload('invoiceNumber', e)} />          
-        </View>
+        </ScrollView>
     )
 }
 
