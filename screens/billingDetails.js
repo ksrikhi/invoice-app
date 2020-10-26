@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 import InputBox from './components/inputBox';
 
 function BillingDetail({ payload, setPayload }) {
