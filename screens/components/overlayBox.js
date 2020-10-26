@@ -2,12 +2,12 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Overlay } from 'react-native-elements';
 
-const OverlayMessage = ({ resData, setResData }) => {
-
+const OverlayMessage = ({ data , closeOverlay }) => {
+  const {type, message} = data || {};
   return (
     <View style={styles.container}> 
-      <Overlay isVisible={!!resData} onBackdropPress={() => setResData(null)}>
-          <Text style={{color: resData.type === 'error'? 'red' : 'green'}}>{resData.message}</Text> 
+      <Overlay isVisible={!!data} onBackdropPress={() => closeOverlay(null)}>
+          <Text style={{color: type === 'error'? 'red' : 'green'}}>{message}</Text> 
       </Overlay>
     </View>
   )

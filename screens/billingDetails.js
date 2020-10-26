@@ -17,19 +17,10 @@ function BillingDetail({ payload, setPayload }) {
                 onChangeText={(e) => handlePayload('clientName', e)} />
 
             <InputBox
-                placeholder="Street Adress"
+                placeholder="client Address"
                 value={payload.companyAddress}
                 onChangeText={(e) => handlePayload('streetAddress', e)} />
 
-            <InputBox
-                placeholder="City, Postal Code"
-                value={payload.city}
-                onChangeText={(e) => handlePayload('city', e)} />
-
-            <InputBox
-                placeholder="Province"
-                value={payload.state}
-                onChangeText={(e) => handlePayload('state', e)} />
             <InputBox
                 placeholder="Phone Number"
                 keyboardType="number-pad"
@@ -41,7 +32,12 @@ function BillingDetail({ payload, setPayload }) {
                 placeholder="Email"
                 keyboardType="email-address"
                 value={payload.email}
-                onChangeText={(e) => handlePayload('email', e)} />          
+                onChangeText={(e) => handlePayload('email', e)} />
+
+                <InputBox
+                placeholder="Invoice Number"
+                value={payload.invoiceNumber}
+                onChangeText={(e) => handlePayload('invoiceNumber', e)} />          
         </View>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { ScrollView, Text, StyleSheet, AsyncStorage } from 'react-native';
 import InputBox from './components/inputBox';
 import InputButton from './components/button';
 import getCustomerDetail from './components/utill';
@@ -25,27 +25,28 @@ function ProfileForm() {
 
     const save = () => {
         AsyncStorage.setItem(custmerDetailKey, JSON.stringify(payload));
-        setProfileData({type: 'success', message :"profile saved successfully"})
+        setProfileData({ type: 'success', message: "profile saved successfully" })
     }
 
     return (
-        <View style={styles.container}>
+
+        <ScrollView style={styles.container}>
             <InputBox
                 placeholder="Company Name"
                 required
                 value={payload.companyName}
                 onChangeText={(e) => handlePayload('companyName', e)} />
 
-            <InputBox
-                placeholder="Company Address"
-                value={payload.companyAddress}
-                onChangeText={(e) => handlePayload('companyAddress', e)} />
+            {/* <InputBox
+                placeholder="Province"
+                value={payload.state}
+                onChangeText={(e) => handlePayload('state', e)} /> */}
 
             <InputBox
-                placeholder="City, Postal Code"
-                value={payload.city}
-                onChangeText={(e) => handlePayload('city', e)} />
-
+                placeholder="Email"
+                keyboardType="email-address"
+                value={payload.email}
+                onChangeText={(e) => handlePayload('email', e)} />
             <InputBox
                 placeholder="Phone Number"
                 keyboardType="number-pad"
@@ -54,20 +55,17 @@ function ProfileForm() {
                 onChangeText={(e) => handlePayload('phoneNumber', e)} />
 
             <InputBox
-                placeholder="Province"
-                value={payload.state}
-                onChangeText={(e) => handlePayload('state', e)} />
+                placeholder="RT Number"
+                value={payload.rtNumber}
+                onChangeText={(e) => handlePayload('rtNumber', e)} />
 
             <InputBox
-                placeholder="Email"
-                keyboardType="email-address"
-                value={payload.email}
-                onChangeText={(e) => handlePayload('email', e)} />
+                placeholder="Company Address"
+                value={payload.companyAddress}
+                onChangeText={(e) => handlePayload('companyAddress', e)} />
 
             <InputButton
-                disabled={!(payload.companyName && payload.companyAddress && payload.city
-                    && payload.state && payload.phoneNumber && payload.email)}
-                // label="Save"
+                disabled={!(payload.companyName && payload.phoneNumber && payload.email)}
                 title="Save"
                 onPress={
                     () => save()
@@ -75,8 +73,8 @@ function ProfileForm() {
             >
             </InputButton>
 
-            {profileData ? <OverlayMessage resData={profileData}  setResData= {setProfileData}/>: null}
-        </View>
+            {profileData ? <OverlayMessage data={profileData} closeOverlay={setProfileData} /> : null}
+        </ScrollView>
     )
 }
 

@@ -42,15 +42,14 @@ function HomeScreen() {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <BillingDetail payload={payload} setPayload={setPayload} />
         <BillingItems listItem={listItem} setListItem={setListItem} />
-        <InputButton style={{ width: 800 }}
-          disabled={!(payload.clientName && payload.city
-            && payload.state && payload.phoneNumber && payload.email)}
+        <InputButton style={{ width: 1000 }}
+          disabled={!(payload.clientName && payload.phoneNumber && payload.email && listItem.length)}
           title="Send Invoice"
           onPress={
             () => sendInvoice()
           }
         />
-         {resData ? <OverlayMessage resData={resData} setResData={setResData}/>: null}
+         {resData ? <OverlayMessage data={resData} closeOverlay={setResData}/>: null}
        
       </View>
     
