@@ -26,7 +26,7 @@ function HomeScreen() {
       items: listItem,
       profileDetail: profileDetail
     }
-    axios.post('https://techbyteinvoice.herokuapp.com/api/sendEmail', data)
+    axios.post(' http://localhost:8080/api/sendEmail', data)
       .then(function (response) {
         setResData(response.data);
         reset()
@@ -42,7 +42,7 @@ function HomeScreen() {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <BillingDetail payload={payload} setPayload={setPayload} />
         <BillingItems listItem={listItem} setListItem={setListItem} />
-        <InputButton style={{ width: 1000 }}
+        <InputButton style={{ width: 900 }}
           disabled={!(payload.clientName && payload.phoneNumber && payload.email && listItem.length)}
           title="Send Invoice"
           onPress={
