@@ -42,7 +42,7 @@ function HomeScreen() {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <BillingDetail payload={payload} setPayload={setPayload} />
         <BillingItems listItem={listItem} setListItem={setListItem} />
-        <InputButton style={{ width: 900 }}
+        <InputButton style={{ width: '100%' }}
           disabled={!(payload.clientName && payload.phoneNumber && payload.email && listItem.length)}
           title="Send Invoice"
           onPress={
